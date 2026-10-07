@@ -1,0 +1,16 @@
+{% if mensagem %}
+<p>{{ mensagem }}</p>
+{% endif %}
+
+<form method="POST" action="/produtos/cadastrar">
+    <label>Descrição:</label>
+    <input type="text" name="descricao">
+
+    <label>Preço de compra:</label>
+    <input type="number" step="0.01" name="precocompra">
+
+    <label>Preço de venda:</label>
+    <input type="number" step="0.01" name="precovenda">
+
+    <button type="submit">Cadastrar</button>
+</form>

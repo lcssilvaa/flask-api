@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+</head>
+<body>
+    <h1>Produtos</h1>
+    <a href="{{ url_for('cadastrar') }}">Cadastrar produto</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Preço de compra</th>
+                <th>Preço de venda</th>
+                <th>Data de criação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for descricao, precocompra, precovenda, datacriacao in regs %}
+            <tr>
+                <td>{{ descricao }}</td>
+                <td>{{ precocompra }}</td>
+                <td>{{ precovenda }}</td>
+                <td>{{ datacriacao }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4">Nenhum produto cadastrado.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
