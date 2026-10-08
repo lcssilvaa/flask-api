@@ -14,18 +14,25 @@
                 <th>Preço de compra</th>
                 <th>Preço de venda</th>
                 <th>Data de criação</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            {% for descricao, precocompra, precovenda, datacriacao in regs %}
+            {% for produto in regs %}
             <tr>
-                <td>{{ descricao }}</td>
-                <td>{{ precocompra }}</td>
-                <td>{{ precovenda }}</td>
-                <td>{{ datacriacao }}</td>
+                <td>{{ produto.descricao }}</td>
+                <td>{{ produto.precocompra }}</td>
+                <td>{{ produto.precovenda }}</td>
+                <td>{{ produto.datacriacao }}</td>
+                <td>
+                    <a href="{{ url_for('editar', idproduto=produto.idproduto) }}">Editar</a>
+                    <form method="post" action="{{ url_for('excluir', idproduto=produto.idproduto) }}">
+                        <button type="submit">Excluir</button>
+                    </form>
+                </td>
             </tr>
             {% else %}
-            <tr><td colspan="4">Nenhum produto cadastrado.</td></tr>
+            <tr><td colspan="5">Nenhum produto cadastrado.</td></tr>
             {% endfor %}
         </tbody>
     </table>

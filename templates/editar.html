@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar produto</title>
+</head>
+<body>
+    <h1>Editar produto</h1>
+    {% if mensagem %}<p>{{ mensagem }}</p>{% endif %}
+    <form method="post" action="{{ url_for('editar', idproduto=produto.idproduto) }}">
+        <label>Descrição:</label>
+        <input type="text" name="descricao" value="{{ produto.descricao }}" required>
+
+        <label>Preço de compra:</label>
+        <input type="number" step="0.01" min="0" name="precocompra" value="{{ produto.precocompra }}" required>
+
+        <label>Preço de venda:</label>
+        <input type="number" step="0.01" min="0" name="precovenda" value="{{ produto.precovenda }}" required>
+
+        <button type="submit">Salvar alterações</button>
+    </form>
+    <a href="{{ url_for('listar') }}">Voltar à listagem</a>
+</body>
+</html>
